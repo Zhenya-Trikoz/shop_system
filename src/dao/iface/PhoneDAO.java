@@ -1,4 +1,4 @@
-package src.dao.iface;
+package dao.iface;
 
 public interface PhoneDAO {
 }

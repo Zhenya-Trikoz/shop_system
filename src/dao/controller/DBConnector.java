@@ -1,4 +1,4 @@
-package src.dao.controller;
+package dao.controller;
 
 import dao.env.Environment;
 
