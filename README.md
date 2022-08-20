@@ -12,7 +12,7 @@
 <br>:x: Check amount on the card;
 <br>:x: Check amount on the phone.
 <br>:x: Bay product.
-<br>:x: Create new departament.
+<br>:x: Create new department.
 <br>:x: Employment of employees.
 <br>:x: Salary increase based on seniority.
 <br>:x: Create new product.
