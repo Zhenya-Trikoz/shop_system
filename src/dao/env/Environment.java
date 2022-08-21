@@ -1,7 +1,7 @@
 package dao.env;
 
 public enum Environment {
-    DB_URL("jdbc:mysql://localhost/banking_system"),
+    DB_URL("jdbc:mysql://localhost/shop"),
     USERNAME("Zhenya"),
     PASSWORD("root");
 
