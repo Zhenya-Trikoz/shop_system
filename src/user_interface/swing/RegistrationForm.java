@@ -32,10 +32,13 @@ public class RegistrationForm extends JDialog {
         exitButton.addActionListener(e -> dispose());
         authorizationButton.addActionListener(e -> {
             dispose();
+            new AuthorizationForm();
 
         });
         registrationButton.addActionListener(e -> {
             registration();
+            dispose();
+            new AuthorizationForm();
         });
         setVisible(true);
     }

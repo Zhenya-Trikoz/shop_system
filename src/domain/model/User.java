@@ -26,6 +26,7 @@ public class User {
         this.password = password;
     }
 
+/*Registration constructor*/
     public User(String firstName, String lastName, int age, String email, char[] login, char[] password) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -37,6 +38,15 @@ public class User {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+    }
+    /*Authorization constructor*/
+    public User(String firstName, String lastName, int age, String email, String login, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
+        this.login = login;
+        this.password = password;
     }
 
     public String getFirstName() {

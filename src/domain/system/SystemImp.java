@@ -24,4 +24,12 @@ public class SystemImp implements I_System {
 
         userDAO.createUser(user);
     }
+
+    @Override
+    public void authorization(User user) {
+        userDAO = new SQLUserDAO();
+
+        this.user = userDAO.readUser(user);
+        System.out.println(this.user);
+    }
 }
