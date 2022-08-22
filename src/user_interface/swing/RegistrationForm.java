@@ -3,6 +3,7 @@ package user_interface.swing;
 import domain.iface.I_System;
 import domain.model.User;
 import domain.system.SystemImp;
+import user_interface.swing.userMain.CreateCardForm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +34,6 @@ public class RegistrationForm extends JDialog {
         authorizationButton.addActionListener(e -> {
             dispose();
             new AuthorizationForm();
-
         });
         registrationButton.addActionListener(e -> {
             registration();
@@ -61,8 +61,11 @@ public class RegistrationForm extends JDialog {
                             textFieldLogin.getText().toCharArray(),
                             passwordField.getPassword());
                     System.out.println(user);
+
                     I_System i_system = new SystemImp(user);
                     i_system.registrationUser();
+                    dispose();
+                    new CreateCardForm(user);
                 }
             }
 

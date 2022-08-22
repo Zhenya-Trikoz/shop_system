@@ -1,8 +1,12 @@
 package domain.model;
 
 import domain.system.Encryption;
+import domain.system.Generator;
 
+import java.math.BigDecimal;
 import java.security.NoSuchAlgorithmException;
+import java.util.Currency;
+import java.util.Locale;
 
 public class User {
     private String firstName;
@@ -11,6 +15,9 @@ public class User {
     private int age;
     private String login;
     private String password;
+
+    private Card card;
+    private Phone phone;
 
     public User(char[] login, char[] password) {
         try {
@@ -26,7 +33,7 @@ public class User {
         this.password = password;
     }
 
-/*Registration constructor*/
+    /*Registration constructor*/
     public User(String firstName, String lastName, int age, String email, char[] login, char[] password) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -39,6 +46,7 @@ public class User {
             e.printStackTrace();
         }
     }
+
     /*Authorization constructor*/
     public User(String firstName, String lastName, int age, String email, String login, String password) {
         this.firstName = firstName;
@@ -48,6 +56,7 @@ public class User {
         this.login = login;
         this.password = password;
     }
+
 
     public String getFirstName() {
         return firstName;
@@ -95,6 +104,28 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard() {
+        this.card = new Card(
+                Generator.generateNumberCard(),
+                Generator.generateCardEndData(),
+                Generator.generateCVC2(),
+                null,
+                ""
+        );
+    }
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
     }
 
     @Override

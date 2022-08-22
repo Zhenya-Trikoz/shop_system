@@ -3,6 +3,7 @@ package user_interface.swing;
 import domain.iface.I_System;
 import domain.model.User;
 import domain.system.SystemImp;
+import user_interface.swing.userMain.UserMenuForm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,12 +39,19 @@ public class AuthorizationForm extends JDialog {
     }
 
     public void authorization() {
+        User user = null;
         if (!textFieldAuthorization.getText().isEmpty() &&
                 passwordField.getPassword().length != 0 &&
                 passwordField.getPassword().length >= 6) {
-            User user = new User(textFieldAuthorization.getText().toCharArray(), passwordField.getPassword());
             I_System i_system = new SystemImp();
-            i_system.authorization(user);
+            user = i_system.authorization(new User(textFieldAuthorization.getText().toCharArray(), passwordField.getPassword()));
+            if (user != null) {
+                dispose();
+                new UserMenuForm(user);
+            } else {
+                System.out.println("Authorization not successful!");
+            }
+
         }
     }
 }

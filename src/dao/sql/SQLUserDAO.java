@@ -30,11 +30,13 @@ public class SQLUserDAO implements UserDAO {
 
     @Override
     public User readUser(User user) {
+
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryUser.selectUser())
         ) {
             statement.setString(1, user.getLogin());
             statement.setString(2, user.getPassword());
+            user = null;
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     String first_name = resultSet.getString("first_name");
@@ -47,7 +49,7 @@ public class SQLUserDAO implements UserDAO {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return user;
     }
