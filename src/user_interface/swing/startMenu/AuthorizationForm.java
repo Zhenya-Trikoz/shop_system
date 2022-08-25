@@ -1,4 +1,4 @@
-package user_interface.swing;
+package user_interface.swing.startMenu;
 
 import domain.iface.I_System;
 import domain.model.User;

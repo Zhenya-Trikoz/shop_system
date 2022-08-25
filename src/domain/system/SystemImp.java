@@ -1,15 +1,20 @@
 package domain.system;
 
 import dao.iface.CardDAO;
+import dao.iface.CurrencyDAO;
 import dao.iface.PhoneDAO;
 import dao.iface.UserDAO;
 import dao.sql.SQLCardDAO;
+import dao.sql.SQLCurrencyDAO;
 import dao.sql.SQLUserDAO;
 import domain.iface.I_System;
 import domain.model.Card;
+import domain.model.Currency;
+import domain.model.ListCurrency;
 import domain.model.User;
 
 import javax.swing.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class SystemImp implements I_System {
@@ -19,6 +24,7 @@ public class SystemImp implements I_System {
     private UserDAO userDAO;
     private CardDAO cardDAO;
     private PhoneDAO phoneDAO;
+    private CurrencyDAO currencyDAO;
 
     public SystemImp() {
 
@@ -65,5 +71,25 @@ public class SystemImp implements I_System {
         cardDAO = new SQLCardDAO();
 
         return cardDAO.readListCard(user);
+    }
+
+    @Override
+    public ArrayList<ListCurrency> returnListCurrency() {
+        currencyDAO = new SQLCurrencyDAO();
+
+        return currencyDAO.readListCurrency();
+    }
+
+    @Override
+    public BigDecimal priceCurrency(String sellCurrency, String buyCurrency) {
+        currencyDAO = new SQLCurrencyDAO();
+
+        return currencyDAO.priceCurrency(sellCurrency, buyCurrency);
+    }
+
+    @Override
+    public void replenishmentCardUser(String numberCard, BigDecimal money) {
+        cardDAO = new SQLCardDAO();
+        cardDAO.updateCard(numberCard, money);
     }
 }

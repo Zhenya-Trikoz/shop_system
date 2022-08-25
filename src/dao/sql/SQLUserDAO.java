@@ -30,7 +30,6 @@ public class SQLUserDAO implements UserDAO {
 
     @Override
     public User readUser(User user) {
-
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryUser.selectUser())
         ) {

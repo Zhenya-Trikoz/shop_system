@@ -6,6 +6,7 @@ import dao.sql.query.QueryCard;
 import domain.model.Card;
 import domain.model.User;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,7 +45,7 @@ public class SQLCardDAO implements CardDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     cards.add(new Card(resultSet.getString("numberCard"),
-                            resultSet.getString("dataEmdCard"),
+                            resultSet.getString("dataEndCard"),
                             resultSet.getString("CVC2"),
                             resultSet.getBigDecimal("money"),
                             resultSet.getString("currency")
@@ -63,7 +64,15 @@ public class SQLCardDAO implements CardDAO {
     }
 
     @Override
-    public void updateCard() {
-
+    public void updateCard(String numberCard, BigDecimal money) {
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryCard.updateCard())
+        ) {
+            statement.setBigDecimal(1, money);
+            statement.setString(2, numberCard);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -8,4 +8,8 @@ public class QueryCard {
     public static String readListCard() {
         return "select * from cards where id_user in (?);";
     }
+
+    public static String updateCard() {
+        return "update cards set money = (?) where numberCard = (?);";
+    }
 }

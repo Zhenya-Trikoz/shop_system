@@ -2,6 +2,8 @@ package user_interface.switchBox;
 
 import domain.iface.I_System;
 import domain.model.Card;
+import domain.model.Currency;
+import domain.model.ListCurrency;
 import domain.model.User;
 import domain.system.SystemImp;
 
@@ -21,4 +23,18 @@ public class SwitchBox {
         }
         return cards;
     }
+
+    public static ArrayList<ListCurrency> setListCurrency(JComboBox comboBoxCurrency) {
+        I_System i_system = new SystemImp();
+        ArrayList<ListCurrency> listCurrency = i_system.returnListCurrency();
+
+        Iterator<ListCurrency> iterator = listCurrency.iterator();
+        comboBoxCurrency.addItem("Your choose");
+        while (iterator.hasNext()) {
+            comboBoxCurrency.addItem(iterator.next().getCurrency());
+        }
+
+        return listCurrency;
+    }
+
 }

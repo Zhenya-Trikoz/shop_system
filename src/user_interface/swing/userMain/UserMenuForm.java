@@ -1,7 +1,7 @@
 package user_interface.swing.userMain;
 
 import domain.model.User;
-import user_interface.swing.AuthorizationForm;
+import user_interface.swing.startMenu.MainForm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +18,7 @@ public class UserMenuForm extends JDialog {
     private JButton buttonGoShop;
     private JButton buttonCheckMoneyCard;
     private JButton buttonCheckMoneyPhone;
+    private JButton buttonChangeCurrencyCard;
 
     public UserMenuForm(User user) {
         setUndecorated(true);
@@ -29,13 +30,23 @@ public class UserMenuForm extends JDialog {
 
         exitButton.addActionListener(e -> {
             dispose();
-            new AuthorizationForm();
+            new MainForm();
         });
 
         buttonCreateCard.addActionListener(e -> {
             dispose();
             new CreateCardForm(user);
         });
+
+        buttonReplenishmentCard.addActionListener(e->{
+            dispose();
+            new ReplenishmentCardForm(user);
+        });
+
+        buttonCreatePhone.addActionListener(e ->{
+
+        });
+
 
         setVisible(true);
 

@@ -1,4 +1,4 @@
-package user_interface.swing;
+package user_interface.swing.startMenu;
 
 import javax.swing.*;
 import java.awt.*;
