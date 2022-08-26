@@ -4,6 +4,7 @@ import domain.iface.I_System;
 import domain.model.User;
 import domain.system.SystemImp;
 import user_interface.swing.userMain.CreateCardForm;
+import user_interface.swing.userMain.CreatePhoneForm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,6 +67,8 @@ public class RegistrationForm extends JDialog {
                     i_system.registrationUser();
                     dispose();
                     new CreateCardForm(user);
+                    dispose();
+                    new CreatePhoneForm(user);
                 }
             }
 

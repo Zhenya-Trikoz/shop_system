@@ -1,9 +1,6 @@
 package domain.iface;
 
-import domain.model.Card;
-import domain.model.Currency;
-import domain.model.ListCurrency;
-import domain.model.User;
+import domain.model.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -19,7 +16,13 @@ public interface I_System {
 
     ArrayList<ListCurrency> returnListCurrency();
 
+    ArrayList<Phone> returnListPhone();
+
     BigDecimal priceCurrency(String sellCurrency, String buyCurrency);
 
     void replenishmentCardUser(String numberCard, BigDecimal money);
+
+    void createPhone(User user, String numberPhone, String currency);
+
+    void replenishmentPhone(String numberCard, BigDecimal reductionAmount, String numberPhone, BigDecimal replenishmentAmount);
 }

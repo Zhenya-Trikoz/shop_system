@@ -4,6 +4,7 @@ import domain.iface.I_System;
 import domain.model.Card;
 import domain.model.ListCurrency;
 import domain.model.User;
+import domain.system.Generator;
 import domain.system.SystemImp;
 import user_interface.switchBox.SwitchBox;
 
@@ -54,6 +55,7 @@ public class ReplenishmentCardForm extends JDialog {
                 }
             }
         });
+
         ArrayList<ListCurrency> listCurrency = SwitchBox.setListCurrency(comboBoxCurrency);
         comboBoxCurrency.addActionListener(e -> {
             if (!textFieldUserSum.getText().isEmpty()) {
@@ -66,28 +68,25 @@ public class ReplenishmentCardForm extends JDialog {
                 } else {
                     textFieldPriceCurrency.setText("1");
                 }
-                textFieldBalanceAfterTopUp.setText(balanceAfterToUp(money).toString());
-
+                textFieldBalanceAfterTopUp.setText((Generator.balanceAfterToUp(textFieldUserSum.getText(), textFieldPriceCurrency.getText(), textFieldBalanceCard.getText())).toString());
             }
         });
         buttonExit.addActionListener(e -> {
             dispose();
             new UserMenuForm(user);
         });
+
         buttonReplenishment.addActionListener(e -> {
             dispose();
             replenishment();
             new UserMenuForm(user);
         });
+
         setVisible(true);
     }
 
     public void replenishment() {
         I_System i_system = new SystemImp();
         i_system.replenishmentCardUser((String) comboBoxUserCard.getSelectedItem(), new BigDecimal(textFieldBalanceAfterTopUp.getText()));
-    }
-
-    public BigDecimal balanceAfterToUp(BigDecimal money) {
-        return new BigDecimal(textFieldUserSum.getText()).multiply(new BigDecimal(textFieldPriceCurrency.getText())).add(money);
     }
 }

@@ -6,7 +6,7 @@
 <br>:x: Sing admin.
 <br>☑️Menu acts;
 <br>☑️Replenishment of the account on the card;
-<br>:x: Replenishment of mobile;
+<br>☑️Replenishment of mobile;
 <br>☑️Create new card;
 <br>:x: Add addition phone;
 <br>:x: Check amount on the card;

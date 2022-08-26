@@ -115,8 +115,8 @@ public class User {
                 Generator.generateNumberCard(),
                 Generator.generateCardEndData(),
                 Generator.generateCVC2(),
-                null,
-                ""
+                new BigDecimal(0),
+                "UAH"
         );
     }
 

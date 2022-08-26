@@ -2,6 +2,7 @@ package domain.system;
 
 import domain.model.Card;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 public class Generator {
@@ -13,14 +14,6 @@ public class Generator {
         return Card.FIRST_NUMBER_PAYMENT_SYSTEM_MASTER_CARD + bankIdentifier + cardID + checkDigit;
     }
 
-//    public static String generateCardEndDataMonth() {
-//        int currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
-//        return currentMonth > 9 ? String.valueOf(currentMonth) : "0" + currentMonth;
-//    }
-//
-//    public static String generateCardEndDataYear() {
-//        return String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
-//    }
 
     public static String generateCardEndData() {
         int currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
@@ -37,8 +30,12 @@ public class Generator {
         return gNum > 10 ? gNum > 100 ? sGNum : "0" + sGNum : "00" + sGNum;
     }
 
-    private static int generateRandomize(int min, int max) {
+    public static int generateRandomize(int min, int max) {
         return (int) Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    public static BigDecimal balanceAfterToUp(String sellAmount, String buyAmount, String money) {
+        return new BigDecimal(sellAmount).multiply(new BigDecimal(buyAmount)).add(new BigDecimal(money));
     }
 
     public static String generateData() {

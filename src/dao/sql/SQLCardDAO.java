@@ -22,8 +22,9 @@ public class SQLCardDAO implements CardDAO {
             statement.setString(1, user.getCard().getNumberCard());
             statement.setString(2, user.getCard().getDataEndCard());
             statement.setString(3, user.getCard().getCVC2());
-            statement.setString(4, user.getCard().getCurrency());
-            statement.setInt(5, SQLCheckIDDAO.checkIdUser(user));
+            statement.setBigDecimal(4, user.getCard().getMoney());
+            statement.setString(5, user.getCard().getCurrency());
+            statement.setInt(6, SQLCheckIDDAO.checkIdUser(user));
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

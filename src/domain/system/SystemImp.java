@@ -6,12 +6,10 @@ import dao.iface.PhoneDAO;
 import dao.iface.UserDAO;
 import dao.sql.SQLCardDAO;
 import dao.sql.SQLCurrencyDAO;
+import dao.sql.SQLPhoneDAO;
 import dao.sql.SQLUserDAO;
 import domain.iface.I_System;
-import domain.model.Card;
-import domain.model.Currency;
-import domain.model.ListCurrency;
-import domain.model.User;
+import domain.model.*;
 
 import javax.swing.*;
 import java.math.BigDecimal;
@@ -81,6 +79,12 @@ public class SystemImp implements I_System {
     }
 
     @Override
+    public ArrayList<Phone> returnListPhone() {
+        phoneDAO = new SQLPhoneDAO();
+        return phoneDAO.returnListPhone(user);
+    }
+
+    @Override
     public BigDecimal priceCurrency(String sellCurrency, String buyCurrency) {
         currencyDAO = new SQLCurrencyDAO();
 
@@ -91,5 +95,21 @@ public class SystemImp implements I_System {
     public void replenishmentCardUser(String numberCard, BigDecimal money) {
         cardDAO = new SQLCardDAO();
         cardDAO.updateCard(numberCard, money);
+    }
+
+    @Override
+    public void createPhone(User user, String numberPhone, String currency) {
+        phoneDAO = new SQLPhoneDAO();
+        phoneDAO.createPhone(user, numberPhone, currency);
+    }
+
+
+    @Override
+    public void replenishmentPhone(String numberCard, BigDecimal reductionAmount, String numberPhone, BigDecimal replenishmentAmount) {
+        cardDAO = new SQLCardDAO();
+        phoneDAO = new SQLPhoneDAO();
+
+        cardDAO.updateCard(numberCard, reductionAmount);
+        phoneDAO.updateBalancePhone(numberPhone, replenishmentAmount);
     }
 }

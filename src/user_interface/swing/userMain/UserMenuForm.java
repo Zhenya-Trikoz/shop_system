@@ -38,12 +38,18 @@ public class UserMenuForm extends JDialog {
             new CreateCardForm(user);
         });
 
-        buttonReplenishmentCard.addActionListener(e->{
+        buttonReplenishmentCard.addActionListener(e -> {
             dispose();
             new ReplenishmentCardForm(user);
         });
 
-        buttonCreatePhone.addActionListener(e ->{
+        buttonCreatePhone.addActionListener(e -> {
+            dispose();
+            new CreatePhoneForm(user);
+        });
+        buttonReplenishmentPhone.addActionListener(e -> {
+            dispose();
+            new ReplenishmentPhoneForm(user);
 
         });
 

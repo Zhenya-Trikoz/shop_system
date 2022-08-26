@@ -1,10 +1,7 @@
 package user_interface.switchBox;
 
 import domain.iface.I_System;
-import domain.model.Card;
-import domain.model.Currency;
-import domain.model.ListCurrency;
-import domain.model.User;
+import domain.model.*;
 import domain.system.SystemImp;
 
 import javax.swing.*;
@@ -35,6 +32,18 @@ public class SwitchBox {
         }
 
         return listCurrency;
+    }
+
+    public static ArrayList<Phone> setListPhone(User user, JComboBox comboBoxPhone) {
+        I_System i_system = new SystemImp(user);
+        ArrayList<Phone> listPhone = i_system.returnListPhone();
+
+        Iterator<Phone> iterator = listPhone.iterator();
+        comboBoxPhone.addItem("Your phone");
+        while (iterator.hasNext()) {
+            comboBoxPhone.addItem(iterator.next().getNumberPhone());
+        }
+        return listPhone;
     }
 
 }
