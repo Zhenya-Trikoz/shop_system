@@ -8,9 +8,9 @@
 <br>☑️Replenishment of the account on the card;
 <br>☑️Replenishment of mobile;
 <br>☑️Create new card;
-<br>:x: Add addition phone;
-<br>:x: Check amount on the card;
-<br>:x: Check amount on the phone.
+<br>☑️Create new phone;
+<br>☑️Check amount on the card;
+<br>☑️Check amount on the phone.
 <br>:x: Bay product.
 <br>:x: Create new department.
 <br>:x: Employment of employees.

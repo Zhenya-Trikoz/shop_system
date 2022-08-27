@@ -51,6 +51,7 @@ public class ReplenishmentCardForm extends JDialog {
                     textFieldBalanceCard.setText(String.valueOf(cardList.get(0).getMoney()));
                     textFieldCurrency.setText(String.valueOf(cardList.get(0).getCurrency()));
                 } else {
+                    textFieldBalanceCard.setText("");
                     textFieldCurrency.setText("");
                 }
             }
