@@ -57,9 +57,13 @@ public class UserMenuForm extends JDialog {
             new CheckMoneyCardForm(user);
         });
 
-        buttonCheckMoneyPhone.addActionListener(e->{
+        buttonCheckMoneyPhone.addActionListener(e -> {
             dispose();
             new CheckMoneyPhoneForm(user);
+        });
+        buttonChangeCurrencyCard.addActionListener(e -> {
+            dispose();
+            new ChangeCurrencyCardForm(user);
         });
 
         setVisible(true);

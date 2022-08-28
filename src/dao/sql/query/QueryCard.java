@@ -12,4 +12,8 @@ public class QueryCard {
     public static String updateCard() {
         return "update cards set money = (?) where numberCard = (?);";
     }
+
+    public static String updateCardCurrency() {
+        return "update cards set money = (?), currency = (?) where numberCard = (?);";
+    }
 }

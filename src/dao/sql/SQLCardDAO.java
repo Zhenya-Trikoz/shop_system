@@ -76,4 +76,18 @@ public class SQLCardDAO implements CardDAO {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void updateCardCurrency(String numberCard, BigDecimal money, String currency) {
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryCard.updateCardCurrency())
+        ) {
+            statement.setBigDecimal(1, money);
+            statement.setString(2, currency);
+            statement.setString(3, numberCard);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

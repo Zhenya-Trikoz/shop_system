@@ -22,7 +22,9 @@ public interface I_System {
 
     void replenishmentCardUser(String numberCard, BigDecimal money);
 
+    void changeCurrencyCard(String numberCard, BigDecimal money, String currency);
     void createPhone(User user, String numberPhone, String currency);
 
     void replenishmentPhone(String numberCard, BigDecimal reductionAmount, String numberPhone, BigDecimal replenishmentAmount);
+
 }

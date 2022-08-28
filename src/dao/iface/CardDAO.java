@@ -18,4 +18,5 @@ public interface CardDAO {
 
     void updateCard(String numberCard, BigDecimal money);
 
+    void updateCardCurrency(String numberCard, BigDecimal money, String currency);
 }

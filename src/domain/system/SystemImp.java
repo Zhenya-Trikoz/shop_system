@@ -98,6 +98,12 @@ public class SystemImp implements I_System {
     }
 
     @Override
+    public void changeCurrencyCard(String numberCard, BigDecimal money, String currency) {
+        cardDAO = new SQLCardDAO();
+        cardDAO.updateCardCurrency(numberCard, money, currency);
+    }
+
+    @Override
     public void createPhone(User user, String numberPhone, String currency) {
         phoneDAO = new SQLPhoneDAO();
         phoneDAO.createPhone(user, numberPhone, currency);
